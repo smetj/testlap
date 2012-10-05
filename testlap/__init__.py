@@ -57,23 +57,23 @@ class TestLap():
         
         for function in dir(self.instance):
             if function.startswith('test_'):
-                sys.stdout.write("Running %s "%(function))
+                print("Running %s "%(function))
                 try:
                     test_instance = timeit.Timer(getattr(self.instance,function))
                     secs = test_instance.timeit(number=self.iterations)
                 except Exception as err:
-                    sys.stdout.write("Failed: %s"%err)
+                    print("Failed: %s"%err)
                     status="Failed"
                     secs=0
                 else:
                     status="OK"
-                    sys.stdout.write (status)
+                    print(status)
 
                 self.table.add_row([function, getattr(self.instance,function).__doc__, status, float("%.10f"%secs)])
         self.__header(self.instance.__doc__)
-        sys.stdout.write (self.table.get_string(sortby="Seconds"))
+        print (self.table.get_string(sortby="Seconds"))
 
     def __header(self, title):
-        sys.stdout.write(sys.version)
-        sys.stdout.write(platform.platform())
-        sys.stdout.write(title)
+        print(sys.version)
+        print(platform.platform())
+        print(title)
