@@ -29,7 +29,9 @@ from prettytable import PrettyTable
 
 class TestLap():
     '''
-    Class which executes and tests all the function starting with test_ of a class instance which it is initiated with.
+    A Python framework to measure and compare the execution speed of different methods in a class.
+    
+    Class which executes and measures all methods of instance starting with test_
     Returns a table containing the results sorted on executionspeed.
     
     Accepts following parameters:
@@ -55,23 +57,23 @@ class TestLap():
         
         for function in dir(self.instance):
             if function.startswith('test_'):
-                sys.stdout.write ("Running %s "%(function))
+                sys.stdout.write("Running %s "%(function))
                 try:
                     test_instance = timeit.Timer(getattr(self.instance,function))
                     secs = test_instance.timeit(number=self.iterations)
                 except Exception as err:
-                    print ("Failed: %s"%err)
+                    sys.stdout.write("Failed: %s"%err)
                     status="Failed"
                     secs=0
                 else:
                     status="OK"
-                    print (status)
+                    sys.stdout.write (status)
 
                 self.table.add_row([function, getattr(self.instance,function).__doc__, status, float("%.10f"%secs)])
         self.__header(self.instance.__doc__)
-        print (self.table.get_string(sortby="Seconds"))
+        sys.stdout.write (self.table.get_string(sortby="Seconds"))
 
     def __header(self, title):
-        print (sys.version)
-        print (platform.platform())
-        print title
+        sys.stdout.write(sys.version)
+        sys.stdout.write(platform.platform())
+        sys.stdout.write(title)

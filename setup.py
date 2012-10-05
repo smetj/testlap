@@ -19,7 +19,7 @@ setup(
     name=PROJECT,
     version=VERSION,
 
-    description='A naive framework to test and measure speed of Python code.',
+    description='A Python framework to measure and compare the execution speed of different methods in a class.',
     long_description=long_description,
 
     author='Jelle Smet',
