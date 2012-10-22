@@ -61,6 +61,8 @@ class TestLap():
                 try:
                     test_instance = timeit.Timer(getattr(self.instance,function))
                     secs = test_instance.timeit(number=self.iterations)
+                    if 'end_%s'%function in dir(self.instance):
+                        getattr(self.instance,'end_%s'%function)
                 except Exception as err:
                     print("Failed: %s"%err)
                     status="Failed"
