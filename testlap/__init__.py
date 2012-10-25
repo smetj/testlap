@@ -59,10 +59,12 @@ class TestLap():
             if function.startswith('test_'):
                 print("Running %s "%(function))
                 try:
+                    if 'pre_%s'%function in dir(self.instance):
+                        getattr(self.instance,'pre_%s'%function)
                     test_instance = timeit.Timer(getattr(self.instance,function))
                     secs = test_instance.timeit(number=self.iterations)
-                    if 'end_%s'%function in dir(self.instance):
-                        getattr(self.instance,'end_%s'%function)
+                    if 'post_%s'%function in dir(self.instance):
+                        getattr(self.instance,'post_%s'%function)
                 except Exception as err:
                     print("Failed: %s"%err)
                     status="Failed"
