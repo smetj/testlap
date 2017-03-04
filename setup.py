@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 
-import os
 from setuptools import setup
-import sys
 
 PROJECT = 'testlap'
 
 # Change docs/sphinx/conf.py too!
-VERSION = '0.1'
+VERSION = '1.0.0'
 
 try:
     long_description = open('README.rst', 'rt').read()
@@ -28,20 +26,22 @@ setup(
     url='https://github.com/smetj/testlap',
     download_url='https://github.com/smetj/molog/tarball/wishbone_based',
 
-    classifiers=['Development Status :: 3 - Alpha',
-                 'License :: OSI Approved :: Apache Software License',
-                 'Programming Language :: Python',
-                 'Programming Language :: Python :: 2',
-                 'Programming Language :: Python :: 2.7',
-                 'Intended Audience :: Programmers',
-                 ],
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'License :: OSI Approved :: Apache Software License',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
+        'Intended Audience :: Programmers',
+    ],
 
     platforms=['Any'],
     packages=['testlap'],
     scripts=[],
 
     provides=[],
-    install_requires=['prettytable'],
-
+    install_requires=[
+        'prettytable'
+    ],
     include_package_data=True,
     )
